@@ -164,6 +164,8 @@ struct array_buffer_allocator : v8::ArrayBuffer::Allocator
 };
 static array_buffer_allocator array_buffer_allocator_;
 
+#include "context_uniqs.inl"
+
 context::context(v8::Isolate* isolate, v8::ArrayBuffer::Allocator* allocator,
 	bool add_default_global_methods, bool enter_context)
 {
@@ -190,6 +192,8 @@ context::context(v8::Isolate* isolate, v8::ArrayBuffer::Allocator* allocator,
 			v8::FunctionTemplate::New(isolate_, context::load_module, data));
 		global->Set(isolate_, "run",
 			v8::FunctionTemplate::New(isolate_, context::run_file, data));
+
+		context_setglobalfunctions(global, isolate);
 	}
 
 	v8::Local<v8::Context> impl = v8::Context::New(isolate_, nullptr, global);

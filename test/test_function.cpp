@@ -14,6 +14,7 @@
 static int f(int const& x) { return x; }
 static std::string g(char const* s) { return s? s : ""; }
 static int h(v8::Isolate*, int x, int y) { return x + y; }
+static int testAdd(v8::Isolate*, int x, int y) { return x + y; }
 
 struct X
 {

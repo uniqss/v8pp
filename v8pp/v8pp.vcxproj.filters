@@ -7,6 +7,7 @@
     <ClCompile Include="throw_ex.cpp" />
     <ClCompile Include="convert.cpp" />
     <ClCompile Include="version.cpp" />
+    <ClCompile Include="context_uniqs.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="context.hpp" />
@@ -26,12 +27,12 @@
     <ClInclude Include="ptr_traits.hpp" />
     <ClInclude Include="persistent.hpp" />
     <ClInclude Include="version.hpp" />
-    <ClInclude Include="class.ipp" />
-    <ClInclude Include="json.ipp" />
-    <ClInclude Include="throw_ex.ipp" />
-    <ClInclude Include="version.ipp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="class.ipp" />
+    <None Include="json.ipp" />
+    <None Include="throw_ex.ipp" />
+    <None Include="version.ipp" />
   </ItemGroup>
 </Project>
