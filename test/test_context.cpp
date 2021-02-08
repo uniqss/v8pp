@@ -62,4 +62,23 @@ void test_context()
 
 		check_eq("run_script with explicit context", r, 42);
 	}
+
+	{
+		v8pp::context::options options;
+		options.add_default_global_methods = true;
+		options.enter_context = false;
+		v8pp::context context(options);
+
+		v8::HandleScope scope(context.isolate());
+		v8::Context::Scope context_scope(context.impl());
+
+		v8::Local<v8::Object> global = context.isolate()->GetCurrentContext()->Global();
+		v8::Local<v8::Value> value;
+		check("have global require", v8pp::get_option(context.isolate(), global, "require", value));
+		check("have global run", v8pp::get_option(context.isolate(), global, "run", value));
+
+		int const r = context.run_script("'4' + 2")->Int32Value(context.isolate()->GetCurrentContext()).FromJust();
+
+		check_eq("run_script with explicit context", r, 42);
+	}
 }

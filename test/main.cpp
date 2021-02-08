@@ -99,7 +99,11 @@ int main(int argc, char const * argv[])
 		else if (arg == "--lib-path")
 		{
 			++i;
-			if (i < argc) lib_path = argv[i];
+			if (i < argc)
+			{
+				lib_path = argv[i];
+				std::cout << "lib_path:" << lib_path << std::endl;
+			}
 		}
 		else if (arg == "--run-tests")
 		{
